@@ -5,8 +5,8 @@ import bach.util._
 
 class S3StoreSpec extends FlatSpec with Matchers {
   "Move data from s3 to ddb" should "work" in {
-    val s3Store = S3Store[Json]("s3://foobucket/fooprefix")
-    val ddbStore = DDBStore[Json]("arn:aws:dynamodb:us-west-2:618458174671:table/AbpSuppressionSnsMessages-prod-JPAmazon")
+    val s3Store = S3Store[Json]("s3://foobucket/fooprefix", mapper)
+    val ddbStore = DDBStore[Json]("arn:aws:dynamodb:us-west-2:618458174671:table/AbpSuppressionSnsMessages-prod-JPAmazon", mapper)
     s3Store.moveTo(ddbStore)
   }
 
